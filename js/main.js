@@ -1,1 +1,326 @@
-function sendEmail(){console.log("function Call");let e=document.getElementById("contact-form"),a=document.getElementById("successMessage"),t=document.getElementById("contactImage"),s=$("#form-container");Email.send({Host:"smtp.elasticemail.com",Username:"gupta.saumya837@gmail.com",Password:"75760AA1E8E5805D38464446F3AE13A7EF39",To:"bestupayofficial@gmail.com",From:"gupta.saumya837@gmail.com",Subject:document.getElementById("subject").value,Body:"Name:"+document.getElementById("name").value+"<br/>Subject:"+document.getElementById("subject").value+"<br/>Message:"+document.getElementById("message").value}).then(a.style.display="inline",t.remove(),s.removeClass("col-md-6"),s.addClass("col-md-12"),e.remove(),localStorage.setItem("formSubmitted","true")).catch(function(e){console.log("Failed to send email:",e)})}AOS.init({duration:800,easing:"slide"}),function(e){"use strict";var a;e(window).stellar({responsive:!0,parallaxBackgrounds:!0,parallaxElements:!0,horizontalScrolling:!1,hideDistantElements:!1,scrollProperty:"scroll"}),e(".js-fullheight").css("height",e(window).height()),e(window).resize(function(){e(".js-fullheight").css("height",e(window).height())}),setTimeout(function(){e("#ftco-loader").length>0&&e("#ftco-loader").removeClass("show")},1),e.Scrollax(),e("body").on("click",".js-fh5co-nav-toggle",function(a){a.preventDefault(),e("#ftco-nav").is(":visible")?e(this).removeClass("active"):e(this).addClass("active")}),e(document).on("click",'#ftco-nav a[href^="#"]',function(a){a.preventDefault(),e.attr(this,"href"),e("html, body").animate({scrollTop:e(e.attr(this,"href")).offset().top-70},500,function(){})}),e(".home-slider").owlCarousel({loop:!0,autoplay:!0,margin:0,animateOut:"fadeOut",animateIn:"fadeIn",nav:!1,autoplayHoverPause:!1,items:1,navText:["<span class='ion-md-arrow-back'></span>","<span class='ion-chevron-right'></span>"],responsive:{0:{items:1},600:{items:1},1e3:{items:1}}}),e("nav .dropdown").hover(function(){var a=e(this);a.addClass("show"),a.find("> a").attr("aria-expanded",!0),a.find(".dropdown-menu").addClass("show")},function(){var a=e(this);a.removeClass("show"),a.find("> a").attr("aria-expanded",!1),a.find(".dropdown-menu").removeClass("show")}),e("#dropdown04").on("show.bs.dropdown",function(){console.log("show")}),e(window).scroll(function(){var a=e(this).scrollTop(),t=e(".ftco_navbar"),s=e(".js-scroll-wrap");a>150&&!t.hasClass("scrolled")&&t.addClass("scrolled"),a<150&&t.hasClass("scrolled")&&t.removeClass("scrolled sleep"),a>350&&(t.hasClass("awake")||t.addClass("awake"),s.length>0&&s.addClass("sleep")),a<350&&(t.hasClass("awake")&&(t.removeClass("awake"),t.addClass("sleep")),s.length>0&&s.removeClass("sleep"))}),e("#section-counter, .hero-wrap, .ftco-counter, .ftco-about").waypoint(function(a){if("down"===a&&!e(this.element).hasClass("ftco-animated")){var t=e.animateNumber.numberStepFactories.separator(",");e(".number").each(function(){var a=e(this),s=a.data("number");console.log(s),a.animateNumber({number:s,numberStep:t},7e3)})}},{offset:"95%"}),a=0,e(".ftco-animate").waypoint(function(t){"down"!==t||e(this.element).hasClass("ftco-animated")||(a++,e(this.element).addClass("item-animate"),setTimeout(function(){e("body .ftco-animate.item-animate").each(function(a){var t=e(this);setTimeout(function(){var e=t.data("animate-effect");"fadeIn"===e?t.addClass("fadeIn ftco-animated"):"fadeInLeft"===e?t.addClass("fadeInLeft ftco-animated"):"fadeInRight"===e?t.addClass("fadeInRight ftco-animated"):t.addClass("fadeInUp ftco-animated"),t.removeClass("item-animate")},50*a,"easeInOutExpo")})},100))},{offset:"95%"}),e(".image-popup").magnificPopup({type:"image",closeOnContentClick:!0,closeBtnInside:!1,fixedContentPos:!0,mainClass:"mfp-no-margins mfp-with-zoom",gallery:{enabled:!0,navigateByImgClick:!0,preload:[0,1]},image:{verticalFit:!0},zoom:{enabled:!0,duration:300}}),e(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({disableOn:700,type:"iframe",mainClass:"mfp-fade",removalDelay:160,preloader:!1,fixedContentPos:!1})}(jQuery),$(document).ready(function(){$(".navbar-nav>li>a").on("click",function(){$(".navbar-collapse").collapse("hide")})}),document.addEventListener("DOMContentLoaded",function(){"true"===localStorage.getItem("formSubmitted")&&sendEmail()});
+ AOS.init({
+ 	duration: 800,
+ 	easing: 'slide'
+ });
+
+(function($) {
+
+	"use strict";
+
+	$(window).stellar({
+    responsive: true,
+    parallaxBackgrounds: true,
+    parallaxElements: true,
+    horizontalScrolling: false,
+    hideDistantElements: false,
+    scrollProperty: 'scroll'
+  });
+
+
+	var fullHeight = function() {
+
+		$('.js-fullheight').css('height', $(window).height());
+		$(window).resize(function(){
+			$('.js-fullheight').css('height', $(window).height());
+		});
+
+	};
+	fullHeight();
+
+	// loader
+	var loader = function() {
+		setTimeout(function() { 
+			if($('#ftco-loader').length > 0) {
+				$('#ftco-loader').removeClass('show');
+			}
+		}, 1);
+	};
+	loader();
+
+	// Scrollax
+   $.Scrollax();
+
+
+
+   // Burger Menu
+	var burgerMenu = function() {
+
+		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
+
+			event.preventDefault();
+
+			if ( $('#ftco-nav').is(':visible') ) {
+				$(this).removeClass('active');
+			} else {
+				$(this).addClass('active');	
+			}
+
+			
+			
+		});
+
+	};
+	burgerMenu();
+
+
+	var onePageClick = function() {
+
+
+		$(document).on('click', '#ftco-nav a[href^="#"]', function (event) {
+	    event.preventDefault();
+
+	    var href = $.attr(this, 'href');
+
+	    $('html, body').animate({
+	        scrollTop: $($.attr(this, 'href')).offset().top - 70
+	    }, 500, function() {
+	    	// window.location.hash = href;
+	    });
+		});
+
+	};
+
+	onePageClick();
+	
+
+	var carousel = function() {
+		$('.home-slider').owlCarousel({
+	    loop:true,
+	    autoplay: true,
+	    margin:0,
+	    animateOut: 'fadeOut',
+	    animateIn: 'fadeIn',
+	    nav:false,
+	    autoplayHoverPause: false,
+	    items: 1,
+	    navText : ["<span class='ion-md-arrow-back'></span>","<span class='ion-chevron-right'></span>"],
+	    responsive:{
+	      0:{
+	        items:1
+	      },
+	      600:{
+	        items:1
+	      },
+	      1000:{
+	        items:1
+	      }
+	    }
+		});
+	};
+	carousel();
+
+	$('nav .dropdown').hover(function(){
+		var $this = $(this);
+		// 	 timer;
+		// clearTimeout(timer);
+		$this.addClass('show');
+		$this.find('> a').attr('aria-expanded', true);
+		// $this.find('.dropdown-menu').addClass('animated-fast fadeInUp show');
+		$this.find('.dropdown-menu').addClass('show');
+	}, function(){
+		var $this = $(this);
+			// timer;
+		// timer = setTimeout(function(){
+			$this.removeClass('show');
+			$this.find('> a').attr('aria-expanded', false);
+			// $this.find('.dropdown-menu').removeClass('animated-fast fadeInUp show');
+			$this.find('.dropdown-menu').removeClass('show');
+		// }, 100);
+	});
+
+
+	$('#dropdown04').on('show.bs.dropdown', function () {
+	  console.log('show');
+	});
+
+	// scroll
+	var scrollWindow = function() {
+		$(window).scroll(function(){
+			var $w = $(this),
+					st = $w.scrollTop(),
+					navbar = $('.ftco_navbar'),
+					sd = $('.js-scroll-wrap');
+
+			if (st > 150) {
+				if ( !navbar.hasClass('scrolled') ) {
+					navbar.addClass('scrolled');	
+				}
+			} 
+			if (st < 150) {
+				if ( navbar.hasClass('scrolled') ) {
+					navbar.removeClass('scrolled sleep');
+				}
+			} 
+			if ( st > 350 ) {
+				if ( !navbar.hasClass('awake') ) {
+					navbar.addClass('awake');	
+				}
+				
+				if(sd.length > 0) {
+					sd.addClass('sleep');
+				}
+			}
+			if ( st < 350 ) {
+				if ( navbar.hasClass('awake') ) {
+					navbar.removeClass('awake');
+					navbar.addClass('sleep');
+				}
+				if(sd.length > 0) {
+					sd.removeClass('sleep');
+				}
+			}
+		});
+	};
+	scrollWindow();
+
+	
+
+	var counter = function() {
+		
+		$('#section-counter, .hero-wrap, .ftco-counter, .ftco-about').waypoint( function( direction ) {
+
+			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
+
+				var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
+				$('.number').each(function(){
+					var $this = $(this),
+						num = $this.data('number');
+						console.log(num);
+					$this.animateNumber(
+					  {
+					    number: num,
+					    numberStep: comma_separator_number_step
+					  }, 7000
+					);
+				});
+				
+			}
+
+		} , { offset: '95%' } );
+
+	}
+	counter();
+
+
+	var contentWayPoint = function() {
+		var i = 0;
+		$('.ftco-animate').waypoint( function( direction ) {
+
+			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
+				
+				i++;
+
+				$(this.element).addClass('item-animate');
+				setTimeout(function(){
+
+					$('body .ftco-animate.item-animate').each(function(k){
+						var el = $(this);
+						setTimeout( function () {
+							var effect = el.data('animate-effect');
+							if ( effect === 'fadeIn') {
+								el.addClass('fadeIn ftco-animated');
+							} else if ( effect === 'fadeInLeft') {
+								el.addClass('fadeInLeft ftco-animated');
+							} else if ( effect === 'fadeInRight') {
+								el.addClass('fadeInRight ftco-animated');
+							} else {
+								el.addClass('fadeInUp ftco-animated');
+							}
+							el.removeClass('item-animate');
+						},  k * 50, 'easeInOutExpo' );
+					});
+					
+				}, 100);
+				
+			}
+
+		} , { offset: '95%' } );
+	};
+	contentWayPoint();
+
+	// magnific popup
+	$('.image-popup').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    closeBtnInside: false,
+    fixedContentPos: true,
+    mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+     gallery: {
+      enabled: true,
+      navigateByImgClick: true,
+      preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+    },
+    image: {
+      verticalFit: true
+    },
+    zoom: {
+      enabled: true,
+      duration: 300 // don't foget to change the duration also in CSS
+    }
+  });
+
+  $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+    disableOn: 700,
+    type: 'iframe',
+    mainClass: 'mfp-fade',
+    removalDelay: 160,
+    preloader: false,
+
+    fixedContentPos: false
+  });
+
+
+
+
+
+})(jQuery);
+
+$(document).ready(function() {
+	// Close the navbar when clicking on a nav item
+	$('.navbar-nav>li>a').on('click', function(){
+	  $('.navbar-collapse').collapse('hide');
+	});
+  });
+
+  let mybutton = document.getElementById("myBtn");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+  
+  function scrollFunction() {
+	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+	  mybutton.style.display = "block";
+	} else {
+	  mybutton.style.display = "none";
+	}
+  }
+  
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+	document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
+  }
+
+
+//   function sendEmail(event) {
+// 	event.preventDefault();
+
+// 	const form = event.target;
+// 	const name = form.name.value;
+// 	const email = 'bestupayofficial@gmail.com';
+// 	const subject = form.subject.value;
+// 	const message = form.message.value;
+
+// 	// Create the mailto link with the form data
+// 	const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+// 	// Open the user's default email client with the pre-filled form data
+// 	window.location.href = mailtoLink;
+
+// 	// Optionally, you can reset the form after sending the email
+// 	// form.reset();
+// }
+
+// // Add event listener to the form's submit button
+// const contactForm = document.getElementById("contact-form");
+// contactForm.addEventListener("submit", sendEmail);
