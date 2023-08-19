@@ -9,7 +9,7 @@ function sendEmail(){
     const successMessage = document.getElementById("successMessage");
     const fileInput = document.getElementById('resume');  
     const file = fileInput.files[0];
-    const fileURL = URL.createObjectURL(file);
+     const fileURL = window.URL.revokeObjectURL(window.URL.createObjectURL(file));
     
     const resumeLink = document.createElement('a');
     resumeLink.href = fileURL;
